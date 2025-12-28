@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import InputEstilizado from "../CampoTexto";
+
 
 const HeaderEstilizado = styled.header`
-    padding: 60px 0;
+    padding: 60px 24px;
     display: flex;
     justify-content: space-between;
     img {
@@ -12,6 +14,7 @@ const Cabecalho = () => {
     return (
         <HeaderEstilizado>
             <img src="/imagens/logo.png" alt="" />
+            <InputEstilizado></InputEstilizado>
         </HeaderEstilizado>
     );
 }
