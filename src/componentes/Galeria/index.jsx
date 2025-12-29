@@ -29,7 +29,7 @@ const ItemGaleria = styled.li`
     flex-grow: 1;
 `;
 
-const Galeria = ({ fotos }) => {
+const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
     return (
         <>
             <Tags />
@@ -37,7 +37,9 @@ const Galeria = ({ fotos }) => {
                 <SecaoFluida>
                     <Titulo>Navegue pela galeria</Titulo>
                     <ListaGaleria>
-                        {fotos.map((foto) => <li key={foto.id}><Imagens foto={foto} /></li>)}
+                        {fotos.map((foto) => <li>
+                            <Imagens aoZoomSolicitado={aoFotoSelecionada} key={foto.id} foto={foto} />
+                        </li>)}
                     </ListaGaleria>
                 </SecaoFluida>
                 <Populares />

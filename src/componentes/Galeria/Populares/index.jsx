@@ -1,8 +1,42 @@
+import styled from "styled-components";
 import Titulo from "../../Titulo";
 
-const Populares = () => {
+import fotos from "../../../assets/fotos.json";
+import Imagens from "../Imagens";
+
+const ColunaFotos = styled.section`
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+`;
+
+const Imagem = styled.img`
+    max-width: 212px;
+    border-radius: 20px;
+`;
+
+const Botao = styled.button`
+    background-color: transparent;
+    color: white;
+    border: 1px solid #C98CF1;
+    padding: 12px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 16px;
+`;
+
+
+const Populares = ({ foto }) => {
     return (
-        <Titulo $alinhamento='center'>Populares</Titulo>
+        <section>
+            <Titulo $alinhamento='center'>Populares</Titulo>
+            <ColunaFotos>
+                {fotos.slice(0, 4).map((foto) => <Imagens key={foto.id} foto={foto} />)}
+            </ColunaFotos>
+            <Botao>Ver mais</Botao>
+        </section>
     );
 }
 
