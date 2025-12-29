@@ -3,7 +3,7 @@ import InputEstilizado from "../CampoTexto";
 
 
 const HeaderEstilizado = styled.header`
-    padding: 60px 24px;
+    padding: 60px 0;
     display: flex;
     justify-content: space-between;
     img {
