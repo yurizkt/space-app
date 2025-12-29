@@ -8,42 +8,38 @@ import Populares from "./Populares";
 
 const GaleriaContainer = styled.div`
     display: flex;
+    gap: 24px;
 `;
 
 const SecaoFluida = styled.section`
     flex-grow: 1;
 `;
 
-const ListaGaleria = styled.ul`
-    width: 100%;
-    list-style: none;
-    gap: 24px;
+const ImagensContainer = styled.section`
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+    gap: 24px;
 `;
 
-const ItemGaleria = styled.li`
-    flex-grow: 1;
-`;
-
-const Galeria = ({ fotos = [], aoFotoSelecionada }) => {
+const Galeria = ({ fotos = [], setTag, aoFotoSelecionada, aoAlternarFavorito }) => {
     return (
         <>
-            <Tags />
+            <Tags setTag={setTag} />
             <GaleriaContainer>
                 <SecaoFluida>
                     <Titulo>Navegue pela galeria</Titulo>
-                    <ListaGaleria>
-                        {fotos.map((foto) => <li>
-                            <Imagens aoZoomSolicitado={aoFotoSelecionada} key={foto.id} foto={foto} />
-                        </li>)}
-                    </ListaGaleria>
+                    <ImagensContainer>
+                        {fotos.map((foto) =>
+                            <Imagens
+                                aoZoomSolicitado={aoFotoSelecionada}
+                                aoAlternarFavorito={aoAlternarFavorito}
+                                key={foto.id}
+                                foto={foto} />
+                        )}
+                    </ImagensContainer>
                 </SecaoFluida>
                 <Populares />
-
             </GaleriaContainer>
         </>
     );

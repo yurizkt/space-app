@@ -14,7 +14,7 @@ const Cabecalho = () => {
     return (
         <HeaderEstilizado>
             <img src="/imagens/logo.png" alt="" />
-            <InputEstilizado></InputEstilizado>
+            <InputEstilizado ></InputEstilizado>
         </HeaderEstilizado>
     );
 }

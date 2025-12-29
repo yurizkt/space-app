@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Titulo from "../../Titulo";
 
-import fotos from "../../../assets/fotos.json";
+import fotos from "./fotos-populares.json";
 import Imagens from "../Imagens";
 
 const ColunaFotos = styled.section`
@@ -18,7 +18,7 @@ const Imagem = styled.img`
 const Botao = styled.button`
     background-color: transparent;
     color: white;
-    border: 1px solid #C98CF1;
+    border: 2px solid #C98CF1;
     padding: 12px 20px;
     font-size: 20px;
     border-radius: 10px;
@@ -28,7 +28,7 @@ const Botao = styled.button`
 `;
 
 
-const Populares = ({ foto }) => {
+const Populares = () => {
     return (
         <section>
             <Titulo $alinhamento='center'>Populares</Titulo>
