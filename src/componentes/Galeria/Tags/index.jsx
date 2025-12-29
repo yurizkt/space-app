@@ -37,7 +37,7 @@ const Div = styled.div`
     justify-content: end;
 `;
 
-const Tags = () => {
+const Tags = ({ setTag }) => {
     return (
         <TagsContainer>
             <TagsLabel>Busque por tags:</TagsLabel>

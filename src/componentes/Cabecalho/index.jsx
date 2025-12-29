@@ -10,11 +10,11 @@ const HeaderEstilizado = styled.header`
         max-width: 212px;
     }
 `
-const Cabecalho = () => {
+const Cabecalho = ({ filtro, setFiltro}) => {
     return (
         <HeaderEstilizado>
             <img src="/imagens/logo.png" alt="" />
-            <InputEstilizado ></InputEstilizado>
+            <InputEstilizado setFiltro={setFiltro} filtro={filtro}></InputEstilizado>
         </HeaderEstilizado>
     );
 }
