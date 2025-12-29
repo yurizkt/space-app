@@ -5,6 +5,8 @@ import BarraLateral from "./componentes/BarraLateral";
 import TituloEstilizado from "./componentes/TituloEstilizado";
 import Galeria from "./componentes/Galeria";
 
+import fotos from "./assets/fotos.json"
+
 const FundoGradiente = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -28,7 +30,7 @@ const ConteudoGaleria = styled.section`
     flex-grow: 1;
 `;
 
-function App() {
+const App = () => {
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -38,7 +40,7 @@ function App() {
           <BarraLateral />
           <ConteudoGaleria>
             <TituloEstilizado />
-            <Galeria />
+            <Galeria fotos={fotos} />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
