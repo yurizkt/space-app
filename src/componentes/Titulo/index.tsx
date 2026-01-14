@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const Titulo = styled.h2`
+interface TituloProps {
+    $alinhamento?: string;
+}
+
+
+const Titulo = styled.h2<TituloProps>`
     font-size: 32px;
     color: #7B78E6;
     text-align: ${ props => props.$alinhamento ? props.$alinhamento : 'left' };

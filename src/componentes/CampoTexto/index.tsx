@@ -1,11 +1,15 @@
 import { styled } from "styled-components"
 import search from './search.png'
 
+interface InputProps {
+    filtro: string;
+    setFiltro: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const ContainerEstilizado = styled.div`
     position: relative;
     display: inline-block;
 `;
-
 
 const CampoTextoEstilizado = styled.input`
     height: 56px;
@@ -30,10 +34,10 @@ const IconeLupa = styled.img`
     height: 38px;
 `;
 
-const CampoTexto = ({ filtro, setFiltro }) => {
+const CampoTexto = ({ filtro, setFiltro }: InputProps) => {
     return (
         <ContainerEstilizado>
-            <CampoTextoEstilizado onChange={(evento) => { setFiltro(evento.target.value) }} type="text" placeholder="O que você procura?" />
+            <CampoTextoEstilizado onChange={(evento: React.ChangeEvent<HTMLInputElement>) => { setFiltro(evento.target.value) }} type="text" placeholder="O que você procura?" />
             <IconeLupa src={search} alt="ícone de lupa" />
         </ContainerEstilizado>
     )

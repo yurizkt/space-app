@@ -1,14 +1,14 @@
 import styled from "styled-components"
-import EstilosGlobais from "./componentes/EstilosGlobais";
-import Cabecalho from "./componentes/Cabecalho";
-import BarraLateral from "./componentes/BarraLateral";
-import TituloEstilizado from "./componentes/TituloEstilizado";
-import Galeria from "./componentes/Galeria";
-import ModalZoom from "./componentes/ModalZoom";
-import Rodape from "./componentes/Rodape";
+import Cabecalho from "./componentes/Cabecalho/index.js";
+import BarraLateral from "./componentes/BarraLateral/index.js";
+import TituloEstilizado from "./componentes/TituloEstilizado/index.js";
+import Galeria from "./componentes/Galeria/index.js";
+import ModalZoom from "./componentes/ModalZoom/index.js";
+import Rodape from "./componentes/Rodape/index.js";
 
 import fotos from "./assets/fotos.json"
 import { useEffect, useState } from "react";
+import { IFoto } from "./componentes/compartilhado/interfaces/foto.js";
 
 const FundoGradiente = styled.div`
   width: 100%;
@@ -36,11 +36,11 @@ const ConteudoGaleria = styled.section`
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
   const [filtro, setFiltro] = useState('');
-  const [tag, setTag] = useState(0);
-  const [fotoComZoom, setFotoComZoom] = useState(null);
+  const [tag, setTag] = useState<any>(0);
+  const [fotoComZoom, setFotoComZoom] = useState<IFoto | null>(null);
 
   useEffect(() => {
-    const fotosFiltradas = fotos.filter(foto => {
+    const fotosFiltradas = fotos.filter((foto:IFoto) => {
       const filtroPortag = !tag || foto.tagId === tag;
       const filtroPorTitulo = !filtro || foto.titulo.toLowerCase().includes(filtro.toLowerCase());
       return filtroPortag && filtroPorTitulo;
@@ -48,14 +48,14 @@ const App = () => {
     setFotosDaGaleria(fotosFiltradas);
   }, [filtro, tag]);
 
-  const aoAlternarFavorito = (foto) => {
+  const aoAlternarFavorito = (foto: IFoto) => {
     if(foto.id === fotoComZoom?.id) {
       setFotoComZoom({
-        ...fotocomZoom,
-        favorito: !fotocomZoom.favorito
+        ...fotoComZoom,
+        favorito: !fotoComZoom.favorito
       });
     };
-    setFotosDaGaleria(fotosDaGaleria.map(fotoDaGaleria => {
+    setFotosDaGaleria(fotosDaGaleria.map((fotoDaGaleria: IFoto) => {
         return {
           ...fotoDaGaleria,
           favorito: fotoDaGaleria.id === foto.id ? !foto.favorito : fotoDaGaleria.favorito
@@ -66,7 +66,6 @@ const App = () => {
 
   return (
     <FundoGradiente>
-      <EstilosGlobais />
       <AppContainer>
         <Cabecalho
           filtro={filtro}
@@ -85,7 +84,7 @@ const App = () => {
       </AppContainer>
       <Rodape />
       <ModalZoom
-        foto={fotoComZoom}
+        foto={fotoComZoom!}
         aoFechar={() => setFotoComZoom(null)}
         aoAlternarFavorito={aoAlternarFavorito} />
     </FundoGradiente>

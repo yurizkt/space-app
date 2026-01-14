@@ -1,12 +1,12 @@
+import ItemNavegacao from "./ItemNavegacao/index.js";
 import styled from "styled-components";
-import ItemNavegacao from "../BarraLateral/ItemNavegacao";
 
 const ListaEstilizada = styled.ul`
     width: 212px;
     list-style: none;
     padding: 0;
     margin: 0;
-`
+`;
 
 const BarraLateral = () => {
     return (

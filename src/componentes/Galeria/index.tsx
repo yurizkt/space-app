@@ -1,9 +1,17 @@
 import Titulo from "../Titulo";
-import Tags from "./Tags";
 import Imagens from "./Imagens";
+import Tags from "./Tags";
 
 import styled from "styled-components";
 import Populares from "./Populares";
+import { IFoto } from "../compartilhado/interfaces/foto";
+
+interface GaleriaProps {
+    fotos: IFoto[];
+    setTag: React.Dispatch<React.SetStateAction<string>>;
+    aoFotoSelecionada: (foto: IFoto) => void;
+    aoAlternarFavorito: (foto: IFoto) => void;
+}
 
 
 const GaleriaContainer = styled.div`
@@ -22,10 +30,10 @@ const ImagensContainer = styled.section`
     gap: 24px;
 `;
 
-const Galeria = ({ fotos = [], setTag, aoFotoSelecionada, aoAlternarFavorito }) => {
+const Galeria = ({ fotos = [], setTag, aoFotoSelecionada, aoAlternarFavorito }: GaleriaProps) => {
     return (
         <>
-            <Tags setTag={setTag} />
+            <Tags setTag={event => setTag(event)} />
             <GaleriaContainer>
                 <SecaoFluida>
                     <Titulo>Navegue pela galeria</Titulo>

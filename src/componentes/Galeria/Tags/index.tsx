@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import tags from "./tags.json";
 
+interface TagsProps {
+    setTag: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface TagProps {
+    id: number;
+    tag: string;
+    titulo: string;
+}
+
+
 const TagsContainer = styled.div`
     display: flex;
     align-items: center;
@@ -37,12 +48,12 @@ const Div = styled.div`
     justify-content: end;
 `;
 
-const Tags = ({ setTag }) => {
+const Tags = ({ setTag }: TagsProps) => {
     return (
         <TagsContainer>
             <TagsLabel>Busque por tags:</TagsLabel>
             <Div>
-                {tags.map((tag) => 
+                {tags.map((tag: TagProps) => 
                     <TagsButton
                         key={tag.id}
                         onClick={() => setTag(tag.tag)}

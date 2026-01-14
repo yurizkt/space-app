@@ -2,6 +2,11 @@ import styled from "styled-components";
 import InputEstilizado from "../CampoTexto";
 
 
+interface CabecalhoProps {
+    filtro: string;
+    setFiltro: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const HeaderEstilizado = styled.header`
     padding: 60px 0;
     display: flex;
@@ -10,7 +15,7 @@ const HeaderEstilizado = styled.header`
         max-width: 212px;
     }
 `
-const Cabecalho = ({ filtro, setFiltro}) => {
+const Cabecalho = ({ filtro, setFiltro}: CabecalhoProps) => {
     return (
         <HeaderEstilizado>
             <img src="/imagens/logo.png" alt="" />

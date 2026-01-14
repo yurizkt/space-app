@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import Imagens from "../Galeria/Imagens";
+import { IFoto } from "../compartilhado/interfaces/foto";
+
+interface ModalZoomProps {
+    foto: IFoto;
+    aoFechar: () => void;
+    aoAlternarFavorito: (foto: IFoto) => void;
+}
 
 const Overlay = styled.div`
     position: fixed;
@@ -37,13 +44,15 @@ const Formulario = styled.form`
     }
 `;
 
-const ModalZoom = ({ foto, aoFechar, aoAlternarFavorito }) => {
+const ModalZoom = ({ foto, aoFechar, aoAlternarFavorito }: ModalZoomProps) => {
     return (
         <>
             { foto && <>
                 <Overlay>
                     <DialogEstilizado open={!!foto} onClose={aoFechar}>
-                        <Imagens foto={foto} expandida={true} aoAlternarFavorito={aoAlternarFavorito} />
+                        <Imagens foto={foto} expandida={true} aoAlternarFavorito={aoAlternarFavorito} aoZoomSolicitado={function (foto: IFoto): void {
+                            throw new Error("Function not implemented.");
+                        } } />
                         <Formulario method="dialog">
                             <button formMethod="dialog">
                                 <img src="/icones/fechar.png" alt="Fechar modal" />

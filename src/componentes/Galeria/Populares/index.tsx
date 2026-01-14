@@ -3,6 +3,8 @@ import Titulo from "../../Titulo";
 
 import fotos from "./fotos-populares.json";
 import Imagens from "../Imagens";
+import { IFoto } from "../../compartilhado/interfaces/foto";
+
 
 const ColunaFotos = styled.section`
     display: flex;
@@ -27,13 +29,12 @@ const Botao = styled.button`
     margin-top: 16px;
 `;
 
-
 const Populares = () => {
     return (
         <section>
             <Titulo $alinhamento='center'>Populares</Titulo>
             <ColunaFotos>
-                {fotos.slice(0, 4).map((foto) => <Imagens key={foto.id} foto={foto} />)}
+                {fotos.slice(0, 4).map((foto: IFoto) => <Imagens key={foto.id} foto={foto} />)}
             </ColunaFotos>
             <Botao>Ver mais</Botao>
         </section>

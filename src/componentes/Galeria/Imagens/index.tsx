@@ -1,6 +1,20 @@
 import styled from "styled-components";
+import { IFoto } from "../../compartilhado/interfaces/foto";
 
-const Figure = styled.figure`
+interface FotoProps {
+    foto: IFoto;
+    expandida?: boolean;
+    aoZoomSolicitado: (foto: IFoto) => void;
+    aoAlternarFavorito: (foto: IFoto) => void;
+}
+
+
+
+interface ExpandidaProps {
+    readonly $expandida: boolean;
+}
+
+const Figure = styled.figure<ExpandidaProps>`
     width: ${(props) => (props.$expandida ? '100%' : '460px')};
     max-width: 100%;
     margin: 0;
@@ -50,7 +64,7 @@ const Rodape = styled.footer`
 `;
 
 
-const Imagens = ({ foto, expandida = false, aoZoomSolicitado, aoAlternarFavorito }) => {
+const Imagens = ({ foto, aoZoomSolicitado, aoAlternarFavorito }: FotoProps, expandida = false) => {
     const iconeFavorito = foto.favorito ? "/icones/favorito-ativo.png" : "/icones/favorito.png";
     return (
         <Figure $expandida={expandida} id={`foto-${foto.id}`}>
